@@ -1,5 +1,8 @@
 package com.example.usernewstest
 
+import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.util.Log
 import androidx.activity.ComponentActivity
@@ -37,10 +40,13 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.core.content.ContextCompat.startActivity
+import com.example.usernewstest.data.Address
 import com.example.usernewstest.data.Post
 import com.example.usernewstest.data.User
 import com.example.usernewstest.ui.theme.UserNewsTestTheme
@@ -152,6 +158,7 @@ fun PostsScreen(postsListViewModel: PostsListViewModel) {
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(16.dp)
+                        .clickable { onPostClicked() }
                 )
             }
         }
@@ -163,7 +170,8 @@ fun PostsScreen(postsListViewModel: PostsListViewModel) {
 fun UsersScreen(usersViewModel: UsersListViewModel) {
     val users by usersViewModel.users.observeAsState(initial = emptyList<User>())
     val usersCount = users.size
-    val handleClick: (Int) -> Unit = { ddsaddss() }
+    val context = LocalContext.current
+    val handleClick: (Int) -> Unit = { onUserClicked(users[it].address, context) }
     RecyclerView(
         itemCount = usersCount,
         modifier = Modifier.fillMaxSize(),
@@ -174,10 +182,16 @@ fun UsersScreen(usersViewModel: UsersListViewModel) {
 }
 
 
-fun ddsadd() {
+fun onPostClicked() {
     Log.d("RecyclerView", "PREVIEW")
-}fun ddsaddss() {
-    Log.d("RecyclerView", "SAPEEEEEEEE")
+}
+
+fun onUserClicked(adress: Address, context: Context ) {
+    val uri = Uri.parse("geo:${adress.geo.lat},${adress.geo.lng} ?q= ${adress.city}, ${adress.street}," +
+            " ${adress.zipcode}, ${adress.suite}")
+    val intent = Intent(Intent.ACTION_VIEW, uri)
+    intent.setPackage("com.google.android.apps.maps")
+    context.startActivity(intent)
 }
 
 @Composable
@@ -229,7 +243,7 @@ fun DefaultPreview() {
             Icon(
                 imageVector = Icons.Default.LocationOn,
                 contentDescription = "Location",
-                modifier = Modifier.clickable(onClick = { ddsadd() })
+                modifier = Modifier.clickable(onClick = { onPostClicked() })
                     .padding(16.dp)
                     .align(Alignment.CenterEnd)
             )
