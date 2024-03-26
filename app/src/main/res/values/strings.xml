@@ -1,3 +1,8 @@
 <resources>
     <string name="app_name">UserNewsTest</string>
+    <string name="noticias">Noticias</string>
+    <string name="usuarios">Usuarios</string>
+    <string name="top_bar_text_main_screen">App de Noticias y Usuarios</string>
+    <string name="buscar_search_bar">Buscar</string>
+    <string name="top_bar_post_detail">Detalle</string>
 </resources>

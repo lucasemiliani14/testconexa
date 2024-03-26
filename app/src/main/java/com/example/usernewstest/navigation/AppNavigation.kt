@@ -1,5 +1,6 @@
 package com.example.usernewstest.navigation
 
+import androidx.activity.viewModels
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -8,6 +9,8 @@ import androidx.navigation.compose.rememberNavController
 import androidx.navigation.navArgument
 import com.example.usernewstest.screens.MainScreen
 import com.example.usernewstest.screens.PostDetail
+import com.example.usernewstest.viewmodels.PostsListViewModel
+import com.example.usernewstest.viewmodels.UsersListViewModel
 
 @Composable
 fun AppNavigation() {
@@ -28,7 +31,8 @@ fun AppNavigation() {
                 }
             )
         ) {
-            PostDetail(navController = navController, slug = it.arguments?.getString("slug"),
+            PostDetail(navController = navController,
+                slug = it.arguments?.getString("slug"),
                 content = it.arguments?.getString("content"))
         }
     }
