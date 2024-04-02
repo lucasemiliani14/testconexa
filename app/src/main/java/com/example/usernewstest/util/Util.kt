@@ -13,14 +13,14 @@ object Util {
         )
         val posts = mutableListOf<Post>()
         for (i in 0 until 14) {
-            val slug = generateRandomSlug(palabras)
+            val title = generateRandomtitle(palabras)
             val content = generateRandomContent(palabras)
-            posts.add(Post(i, slug, content))
+            posts.add(Post(i, title, content))
         }
         return posts
     }
 
-    private fun generateRandomSlug(palabras: List<String>): String {
+    private fun generateRandomtitle(palabras: List<String>): String {
         val randomNumber = (2..6).random()
         return palabras.shuffled().take(randomNumber).joinToString(" ")
     }

@@ -1,10 +1,8 @@
-import org.jetbrains.kotlin.kapt3.base.Kapt.kapt
+
 
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
-    kotlin("kapt")
-    id("com.google.dagger.hilt.android") version "2.44" apply false
 }
 
 android {
@@ -68,17 +66,12 @@ dependencies {
     implementation("androidx.compose.ui:ui-test-junit4-android:1.6.4")
     implementation("androidx.navigation:navigation-testing:2.7.7")
     testImplementation("junit:junit:4.13.2")
-    androidTestImplementation("androidx.test.ext:junit:1.1.5")
-    androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    androidTestImplementation("androidx.compose.ui:ui-test-junit4")
     debugImplementation("androidx.compose.ui:ui-tooling")
     debugImplementation("androidx.compose.ui:ui-test-manifest")
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
     implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
-    implementation("com.google.dagger:hilt-android:2.44")
     implementation ("androidx.compose.runtime:runtime-livedata:1.6.4")
     implementation ("androidx.compose.compiler:compiler:1.5.11")
-    kapt("com.google.dagger:hilt-android-compiler:2.44")
     implementation("androidx.navigation:navigation-compose:2.7.7")
     implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
 }

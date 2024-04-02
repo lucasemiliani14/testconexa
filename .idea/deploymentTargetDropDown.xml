@@ -8,6 +8,18 @@
       <entry key="app">
         <State />
       </entry>
+      <entry key="check_tabBarPostClick()">
+        <State />
+      </entry>
+      <entry key="check_tabBarUserClick()">
+        <State />
+      </entry>
+      <entry key="dsad()">
+        <State />
+      </entry>
+      <entry key="test_users_call()">
+        <State />
+      </entry>
     </value>
   </component>
 </project>
