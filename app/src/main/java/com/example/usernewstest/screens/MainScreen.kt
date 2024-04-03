@@ -39,6 +39,7 @@ import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.platform.testTag
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.ImeAction
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelStoreOwner
@@ -178,8 +179,8 @@ fun onPostClicked(navController: NavController, post: Post) {
 
 }
 
-fun onUserClicked(adress: Address, context: Context) {
-    val uri = Uri.parse("geo:${adress.geo.lat},${adress.geo.lng}")
+fun onUserClicked(address: Address, context: Context) {
+    val uri = Uri.parse("geo:${address.geo.lat},${address.geo.lng}")
     val intent = Intent(Intent.ACTION_VIEW, uri)
     intent.setPackage("com.google.android.apps.maps")
     context.startActivity(intent)

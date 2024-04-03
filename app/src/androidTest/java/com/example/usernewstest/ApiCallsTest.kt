@@ -5,7 +5,7 @@ import junit.framework.TestCase
 import kotlinx.coroutines.test.runTest
 import org.junit.Test
 
-class ApiCallsTests {
+class ApiCallsTest {
 
     @Test
     fun test_posts_call()  = runTest {
